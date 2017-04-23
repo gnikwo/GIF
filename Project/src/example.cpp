@@ -1,5 +1,5 @@
-//Exemple de code (sale) compatible Windows et Linux
-//A compiler avec "gcc -o exemple -std=c++11 -pthread exemple_multi_os.cpp"
+/***Exemple de code (sale) compatible Windows et Linux
+*A compiler avec "gcc -o exemple -std=c++11 -pthread exemple_multi_os.cpp"***/
 
 #include <stdlib.h>
 #include <string.h>

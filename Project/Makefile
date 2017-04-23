@@ -9,21 +9,17 @@ SRC_DIR=src
 OBJECTS=${SOURCES:%.cpp=$(OBJ_DIR)/%.o}
 
 IDIR=-I include \
-	 -I /usr/include \
+#	 -I /usr/include \
 #	 -I /usr/include/SOIL \
 #	 -I /usr/include/libdrm \
 
-LDIR=-L /usr/lib \
-	 -L /usr/local/lib \
-	 -L /usr/lib64 \
-	 -L /usr/lib/x86_64-linux-gnu \
+LDIR=
 
 
-CFLAGS=-Wall -Wextra -O3 -g3 -std=c++11 -Wno-unused-variable -Wno-unused-parameter -fPIC
+CFLAGS=-Wall -Wextra -O3 -g3 -std=c++11 -Wno-unused-variable -Wno-unused-parameter #-fPIC
 LFLAGS=-lstdc++ -lpthread
 
-CC=g++
-
+CC=gcc
 
 all: init $(OUT_DIR)/$(EXEC)
 

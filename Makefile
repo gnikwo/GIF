@@ -1,10 +1,16 @@
+ifeq ($(OS), Windows_NT)
+MAKE=mingw32-make
+else
+MAKE=make
+endif
+
 all:
 	@echo "=====Compiling Library====="
-	@make -C Project
+	@$(MAKE) -C Project
 	@echo "=====Compiling Example project====="
-	@make -C Example
+	@$(MAKE) -C Example
 	@echo "=====Compiling Done====="
 
 clean:
-	@make -C Project clean
-	@make -C Example clean
+	@$(MAKE) -C Project clean
+	@$(MAKE) -C Example clean
