@@ -1,4 +1,4 @@
-./bin
-./bin/*
-./obj
-./obj/*
+Project/bin
+Example/obj
+Example/bin
+Example/obj
