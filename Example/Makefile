@@ -19,6 +19,7 @@ LDIR=-L /usr/lib \
 
 CFLAGS=-Wall -Wextra -O3 -g3 -std=c++11 -Wno-unused-variable -Wno-unused-parameter
 LFLAGS=-lstdc++ \
+	   -lGIF \
 	   -lpthread
 
 CC=g++

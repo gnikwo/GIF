@@ -3,7 +3,8 @@
 
 #include <string>
 
-namespace LO43{
+namespace GIF
+{
 
     class Window
     {

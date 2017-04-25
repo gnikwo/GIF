@@ -1,26 +1,22 @@
 #include <iostream>
 #include <string>
 
-//#include <LO43.h>
+#include <Window.h>
 
 using namespace std;
-//using namespace L043;
+using namespace GIF;
 
 int main(int argc, char** argv)
 {
 
-	Window w;
-	w.init()
-	w.run();
+    Window w;
 
 	while(1)
 	{
 
-    		cout << "PLOP" << endl;
-	
-	}
+		cout << "PLOP" << endl;
 
-	w.stop();
+	}
 
     return 0;
 

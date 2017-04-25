@@ -1,6 +1,6 @@
-EXEC=libLO43.so
+EXEC=libGIF.so
 
-SOURCES=example.cpp
+SOURCES=example.cpp Window.cpp Element.cpp ThreadInterface.cpp ThreadUnix.cpp
 
 OUT_DIR=lib
 OBJ_DIR=obj
@@ -8,13 +8,12 @@ SRC_DIR=src
 
 OBJECTS=${SOURCES:%.cpp=$(OBJ_DIR)/%.o}
 
-IDIR=-I include \
+IDIR=-I include
 #	 -I /usr/include \
 #	 -I /usr/include/SOIL \
 #	 -I /usr/include/libdrm \
 
 LDIR=
-
 
 CFLAGS=-Wall -Wextra -O3 -g3 -std=c++11 -Wno-unused-variable -Wno-unused-parameter -fPIC
 LFLAGS=-lstdc++ -lpthread
@@ -25,7 +24,6 @@ all: init $(OUT_DIR)/$(EXEC)
 
 $(OUT_DIR)/$(EXEC): $(OBJECTS)
 	@echo "\n=======LINKING=======\n"
-	#ar rcs $@ $^
 	$(CC) -o $@ $^ $(LDIR) $(LFLAGS) -shared
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
