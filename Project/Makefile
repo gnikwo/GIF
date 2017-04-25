@@ -16,10 +16,10 @@ IDIR=-I include \
 LDIR=
 
 
-CFLAGS=-Wall -Wextra -O3 -g3 -std=c++11 -Wno-unused-variable -Wno-unused-parameter #-fPIC
+CFLAGS=-Wall -Wextra -O3 -g3 -std=c++11 -Wno-unused-variable -Wno-unused-parameter -fPIC
 LFLAGS=-lstdc++ -lpthread
 
-CC=gcc
+CC=g++
 
 all: init $(OUT_DIR)/$(EXEC)
 
