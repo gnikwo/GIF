@@ -2,8 +2,13 @@
 
 #include <iostream>
 
+#include <windows.h>
+
+#include <conio.h>
+#include <process.h>
+
 using namespace std;
-using namespace LO43;
+using namespace GIF;
 
 ThreadWindows::ThreadWindows()
 {

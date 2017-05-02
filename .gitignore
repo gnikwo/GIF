@@ -1,8 +1,6 @@
-Project/lib
-Project/obj
-Project/lib/*
-Project/obj/*
-Example/bin
-Example/obj
-Example/bin/*
-Example/obj/*
+*
+!.gitignore
+!CMakeList.txt
+!Makefile
+!GIF/
+!Example/

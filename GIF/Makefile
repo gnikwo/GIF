@@ -1,6 +1,6 @@
 EXEC=libGIF.so
 
-SOURCES=example.cpp Window.cpp Element.cpp ThreadInterface.cpp ThreadUnix.cpp
+SOURCES=example.cpp Window.cpp Element.cpp ThreadInterface.cpp ThreadUnix.cpp MutexInterface.cpp MutexUnix.cpp
 
 OUT_DIR=lib
 OBJ_DIR=obj

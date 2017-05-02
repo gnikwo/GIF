@@ -4,11 +4,16 @@
 #include <string>
 
 #include "ThreadInterface.h"
+#include "MutexWindows.h"
 
-namespace LO43{
+namespace GIF{
 
-    class Thread: public ThreadInterface
+    class Thread
     {
+
+        private:
+
+            Mutex m__runMutex;
 
         public:
 

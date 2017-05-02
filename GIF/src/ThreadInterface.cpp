@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace LO43;
+using namespace GIF;
 
 ThreadInterface::ThreadInterface()
 {
