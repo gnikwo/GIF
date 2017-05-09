@@ -1,7 +1,6 @@
 *
 !.gitignore
-!CMakeList.txt
-!Makefile
+!CMakeLists.txt
 !Analyse/
 !GIF/
 !Example/
