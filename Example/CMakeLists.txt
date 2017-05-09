@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8.9)
+project(Example)
+include_directories(include)
+include_directories(src)
+find_package (GIF)
+add_executable(Example src/main.cpp)

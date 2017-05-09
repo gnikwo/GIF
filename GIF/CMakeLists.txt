@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8.9)
+project(GIF)
+include_directories(include)
+include_directories(src)
+SET(LIBRARY_OUTPUT_PATH lib)
+add_library(GIF SHARED src/Window.cpp src/Element.cpp src/ThreadUnix.cpp src/MutexUnix.cpp src/MutexInterface.cpp src/ThreadInterface.cpp)
