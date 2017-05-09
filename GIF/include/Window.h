@@ -7,7 +7,6 @@ namespace GIF
 {
 
     class Window
-    {
 
         public:
 

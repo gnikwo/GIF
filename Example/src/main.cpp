@@ -1,15 +1,15 @@
 #include <iostream>
 #include <string>
 
-#include <Window.h>
+//#include <Window.h>
 
 using namespace std;
-using namespace GIF;
+//using namespace GIF;
 
 int main(int argc, char** argv)
 {
 
-    Window w;
+//    Window w;
 
 	while(1)
 	{
