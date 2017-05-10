@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 2.8.9)
-ADD_SUBDIRECTORY(GIF)
-ADD_SUBDIRECTORY(Example)
+project(GIF_all)
+
+add_subdirectory(GIF)
+add_subdirectory(Example)
 
