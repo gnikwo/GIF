@@ -1,3 +1,7 @@
+/*******************************
+ * Window class implementation *
+ *******************************/
+
 #include "Window.h"
 
 #include <iostream>
@@ -5,14 +9,15 @@
 #include <thread>
 
 using namespace std;
-//using namespace glm;
+using namespace glm;
 using namespace GIF;
 
 GIF::Window::Window(std::string title, int width, int height): m__window(),
                                                                 m__title(title),
                                                                 m__width(width),
-                                                                m__height(height)//,
-                                                                //m__backgroundColor(vec3(0.2, 0.2, 0.2))
+                                                                m__height(height),
+                                                                m__backgroundColor(vec3(0.2, 0.2, 0.2)),
+                                                                m__elements()
 {
 
 
@@ -64,11 +69,17 @@ void GIF::Window::render()
 
         glViewport(0, 0, m__width, m__height);
 
-        //glClearColor(m__backgroundColor.x, m__backgroundColor.y, m__backgroundColor.z, 1.0f);
-        glClearColor(0.2, 0.2, 0.2, 1.0f);
+        glClearColor(m__backgroundColor.x, m__backgroundColor.y, m__backgroundColor.z, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+        for(auto &element : m__elements)
+        {
+
+            element->render();
+
+        }
 
     glfwSwapBuffers(m__window);
 
@@ -87,16 +98,10 @@ void GIF::Window::render()
 
 //==============CALLBACKS==========
 
-void GIF::Window::error_callback(int error, const char* description)
-{
-	cout << "[Window] error_callback() :" << description << "\n";
-}
-
-
 void GIF::Window::window_size_callback(GLFWwindow* window, int width, int height)
 {
 
-	cout << "[Window] window_size_callback" << endl;
+	cout << "[Window] window_size_callback(): " << window << ": New size:" << width << "x" << height << endl;
 
 }
 
@@ -104,7 +109,7 @@ void GIF::Window::window_size_callback(GLFWwindow* window, int width, int height
 void GIF::Window::window_focus_callback(GLFWwindow* window, int state)
 {
 
-	cout << "[Window] window_focus_callback: " << state << endl;
+	cout << "[Window] window_focus_callback(): " << window << ": " << state << endl;
 
 	//static_cast<Window*>(glfwGetWindowUserPointer(window))->m__paused = !state;
 
@@ -113,18 +118,18 @@ void GIF::Window::window_focus_callback(GLFWwindow* window, int state)
 void GIF::Window::window_close_callback(GLFWwindow* window)
 {
 
-	cout << "[Window] window_close_callback" << endl;
+	cout << "[Window] window_close_callback(): " << window << endl;
 
 	Window* w = static_cast<Window*>(glfwGetWindowUserPointer(window));
 
-//	w->close();
+	w->close();
 
 }
 
 void GIF::Window::mouse_move_callback(GLFWwindow* window, double x, double y)
 {
 
-	//cout << "[Window] mouse_move_callback" << endl;
+	cout << "[Window] mouse_move_callback(): " << window << ": New pos:" << x << "x " << y << "y" << endl;
 
 }
 
