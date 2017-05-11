@@ -5,9 +5,28 @@
 #include <thread>
 
 using namespace std;
+//using namespace glm;
 using namespace GIF;
 
-GIF::Window::Window(std::string title, int width, int height): m__window(), m__title(title), m__width(width), m__height(height)
+GIF::Window::Window(std::string title, int width, int height): m__window(),
+                                                                m__title(title),
+                                                                m__width(width),
+                                                                m__height(height)//,
+                                                                //m__backgroundColor(vec3(0.2, 0.2, 0.2))
+{
+
+
+}
+
+
+GIF::Window::~Window()
+{
+
+
+
+}
+
+void GIF::Window::load()
 {
 
     m__window = glfwCreateWindow(m__width, m__height, m__title.c_str(), NULL, NULL);
@@ -36,13 +55,37 @@ GIF::Window::Window(std::string title, int width, int height): m__window(), m__t
 
 }
 
-
-Window::~Window()
+void GIF::Window::render()
 {
 
+    glfwMakeContextCurrent(m__window);
 
+    int startTime = int(glfwGetTime() * 1000);
+
+        glViewport(0, 0, m__width, m__height);
+
+        //glClearColor(m__backgroundColor.x, m__backgroundColor.y, m__backgroundColor.z, 1.0f);
+        glClearColor(0.2, 0.2, 0.2, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+    glfwSwapBuffers(m__window);
+
+	glfwPollEvents();
+
+	int endTime = int(glfwGetTime() * 1000);
+	int elapsedTime = endTime - startTime;
+
+	//cout << elapsedTime << endl;
+
+    int framerate = 60/1000;
+	if(elapsedTime < framerate)
+        this_thread::sleep_for(std::chrono::milliseconds(framerate - elapsedTime));
 
 }
+
+//==============CALLBACKS==========
 
 void GIF::Window::error_callback(int error, const char* description)
 {
@@ -83,4 +126,17 @@ void GIF::Window::mouse_move_callback(GLFWwindow* window, double x, double y)
 
 	//cout << "[Window] mouse_move_callback" << endl;
 
+}
+
+
+void GIF::Window::close()
+{
+
+	glfwSetWindowShouldClose(m__window, GL_TRUE);
+
+}
+
+int GIF::Window::shouldClose()
+{
+	return glfwWindowShouldClose(m__window);
 }

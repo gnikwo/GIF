@@ -22,10 +22,20 @@ namespace GIF
             int m__width;
             int m__height;
 
+            //glm::vec3 m__backgroundColor;
+
         public:
 
             Window(std::string title = "First window", int width = 512, int height = 512);
             virtual ~Window();
+
+            void load();
+
+            void close();
+
+            int shouldClose();
+
+            void render();
 
         private:
 
@@ -38,6 +48,6 @@ namespace GIF
 
     };
 
-};
+}
 
 #endif

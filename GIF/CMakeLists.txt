@@ -1,17 +1,11 @@
 cmake_minimum_required(VERSION 2.8.9)
 project(GIF CXX)
 
-#========DEPS=======
-#GLFW
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-add_subdirectory(deps/glfw)
-
 
 #========GIF========
 #Lib declaration
 add_library(GIF SHARED
+    src/GIF.cpp
     src/Window.cpp
     src/Element.cpp
     src/MutexInterface.cpp
@@ -21,16 +15,12 @@ add_library(GIF SHARED
 )
 
 #Compilation args
-set(CMAKE_CXX_FLAGS "-Wall")
-
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -O3 -g3 -std=c++11")
 
 #Include dirs
 include_directories(include)
-include_directories(deps/glfw/include)
-
-#Linked libs
-find_package(glfw3 3.2 REQUIRED)
-target_link_libraries(GIF glfw ${GLFW_LIBRARIES})
+include_directories(../deps/glfw/include)
+#include_directories(../deps/glm/include)
 
 #Destination dir
 set(LIBRARY_OUTPUT_PATH lib)

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include <Window.h>
+#include <GIF.h>
 
 using namespace std;
 using namespace GIF;
@@ -9,12 +9,12 @@ using namespace GIF;
 int main(int argc, char** argv)
 {
 
-    Window w;
+    Window* w = Gif::init();
 
 	while(1)
 	{
 
-		cout << "PLOP" << endl;
+        w->render();
 
 	}
 
