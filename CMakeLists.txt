@@ -12,7 +12,7 @@ add_subdirectory(deps/glfw)
 
 #GLFW
 
-add_subdirectory(deps/glm)
+#add_subdirectory(deps/glm)
 
 #GLEW
 add_subdirectory(GIF)
