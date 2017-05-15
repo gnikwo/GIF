@@ -11,11 +11,13 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(deps/glfw)
 
-#GLFW
+#GLM
+add_subdirectory(deps/glm)
 
-#add_subdirectory(deps/glm)
+#SOIL
+add_subdirectory(deps/soil)
 
-#GLEW
+#GIF
 add_subdirectory(GIF)
 add_subdirectory(Example)
 

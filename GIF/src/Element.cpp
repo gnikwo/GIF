@@ -30,10 +30,10 @@ Element::~Element()
 void Element::load()
 {
 
-	int sizeVerticesBytes = this->getVerticesSize();
+	int sizeVerticesBytes = this->getPointsCount() * 3 * sizeof(float);
 	//int sizeUVsBytes = this->getUVsSize();
 
-	float* vertices = this->getVerticesFloat();
+	float* vertices = this->getPointsFloat();
 	//float* UVs = this->getUVsFloat();
 
 	GLuint& idVAO = this->getVAO();
@@ -139,7 +139,7 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 	/*glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);*/
 
-	glDrawArrays(GL_TRIANGLES, 0, getVertexCount());
+	glDrawArrays(GL_TRIANGLES, 0, getPointsCount());
 
 	/*glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -153,7 +153,7 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 
 
 //=====Vertices=====
-int Element::getVertexCount()
+int Element::getPointsCount()
 {
 
 	return m__points.size();
@@ -161,25 +161,7 @@ int Element::getVertexCount()
 }
 
 
-int Element::getVerticesSize()
-{
-
-	int size = m__points.size();
-
-	return size * 3 * sizeof(float);
-
-}
-
-
-vector<vec3> Element::getVertices()
-{
-
-	return m__points;
-
-}
-
-
-float* Element::getVerticesFloat()
+float* Element::getPointsFloat()
 {
 
 	return this->vec3ToFloat(m__points);

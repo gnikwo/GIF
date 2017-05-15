@@ -8,6 +8,7 @@ add_library(GIF SHARED
     src/GIF.cpp
     src/Window.cpp
     src/Shader.cpp
+    src/Texture.cpp
     src/Element.cpp
     src/MutexInterface.cpp
     src/MutexUnix.cpp
@@ -23,6 +24,7 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -O3 -g3 -std=c++11")
 include_directories(include)
 include_directories(../deps/glfw/include)
 include_directories(../deps/glm)
+include_directories(../deps/soil/src)
 
 #Destination dir
 set(LIBRARY_OUTPUT_PATH lib)

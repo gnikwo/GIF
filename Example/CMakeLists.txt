@@ -18,12 +18,12 @@ include_directories(../GIF/include)
 #Linked libs
 find_package(GIF REQUIRED)
 find_package(glfw3 3.2 REQUIRED)
-#find_package(glm REQUIRED)
 
 target_link_libraries(Example GIF)
 target_link_libraries(Example glfw ${GLFW_LIBRARIES})
 target_link_libraries(Example GLEW)
 target_link_libraries(Example glm)
+target_link_libraries(Example soil)
 
 #Destination dir
 set(EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE})

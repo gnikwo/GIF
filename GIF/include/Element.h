@@ -41,6 +41,11 @@ namespace GIF{
             /**
              *
              */
+            std::vector<glm::vec2> m__UVs;
+
+            /**
+             *
+             */
             GLuint m__vao;
 
             /**
@@ -128,7 +133,7 @@ namespace GIF{
             /**
              *
              */
-            float* getVerticesFloat();
+            float* getPointsFloat();
 
             /**
              *

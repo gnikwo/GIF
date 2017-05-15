@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 
     w->addElement(b);
 
-	while(1)
+	while(!w->shouldClose())
 	{
 
         w->render();
