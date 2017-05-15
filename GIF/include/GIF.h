@@ -16,6 +16,7 @@
 
 #include "Window.h"
 #include "Texture.h"
+#include "Library.h"
 
 namespace GIF
 {
