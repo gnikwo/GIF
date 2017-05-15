@@ -78,9 +78,10 @@ Window* Gif::init()
 
 void Gif::unload()
 {
-
+	Gif::m__textureLibrary->flush();
+	Gif::m__windowLibrary->flush();
+	
 	glfwTerminate();
-
 }
 
 

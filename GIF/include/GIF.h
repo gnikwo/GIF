@@ -15,6 +15,7 @@
 #include <GLFW/glfw3.h>
 
 #include "Window.h"
+#include "Texture.h"
 
 namespace GIF
 {
@@ -33,6 +34,8 @@ namespace GIF
             virtual ~Gif();
 
             static void error_callback(int error, const char* description);
+			static Library<Texture>* m__textureLibrary;
+            static Library<Window>* m__windowLibrary;
 
     };
 
