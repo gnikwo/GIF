@@ -9,8 +9,8 @@
 using namespace std;
 using namespace GIF;
 
-Library<Texture>* Lore::m__textureLibrary = new Library<Texture>();
-Library<Window>* Lore::m__windowLibrary = new Library<Window>();
+Library<Texture>* Gif::m__textureLibrary = new Library<Texture>();
+Library<Window>* Gif::m__windowLibrary = new Library<Window>();
 
 using GIF::Window;
 
