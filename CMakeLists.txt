@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 2.8.9)
 project(GIF_all)
 
-SET(CMAKE_CXX_COMPILER C:/MinGW/bin/g++.exe)
-set(CMAKE_MODULE_PATH cmake/Modules)
+if(WIN32)
+
+    SET(CMAKE_CXX_COMPILER C:/MinGW/bin/g++.exe)
+    set(CMAKE_MODULE_PATH cmake/Modules)
+
+endif()
 
 #========DEPS=======
 #GLFW

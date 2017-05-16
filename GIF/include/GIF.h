@@ -29,6 +29,8 @@ namespace GIF
             static Window* init();
             static void unload();
 
+            static Window* createWindow(std::string id, std::string title);
+
         private:
 
             Gif();

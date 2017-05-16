@@ -56,7 +56,7 @@ void Controller::check(Window* w)
 	for (const auto p : m__keyBindings)
 	{
 
-		if (glfwGetKey(w->getWindow(), p.first) == GLFW_PRESS)
+	if (glfwGetKey(w->getWindow(), p.first) == GLFW_PRESS)
 		{
 
 			p.second(x, y);

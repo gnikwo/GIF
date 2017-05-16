@@ -1,6 +1,7 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
+#include <iostream>
 #include <string>
 #include <map>
 
@@ -17,11 +18,12 @@ namespace GIF
             public:
 
                 Library(): m__objects()
-            {
+                {
 
 
 
-            }
+                }
+
 
                 ~Library()
                 {
