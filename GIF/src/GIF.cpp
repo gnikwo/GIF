@@ -102,6 +102,31 @@ Window* Gif::createWindow(string id, string title)
 }
 
 
+Texture* Gif::createTexture(string id, string name)
+{
+
+    Texture* t = new Texture(name);
+    t->load();
+
+    m__textureLibrary->add(id, t);
+
+    return t;
+
+}
+
+
+Texture* Gif::getTexture(string name)
+{
+
+    if(m__textureLibrary->has(name))
+
+        return m__textureLibrary->get(name);
+
+    return nullptr;
+
+}
+
+
 //==========CALLBACKS========
 
 void Gif::error_callback(int error, const char* description)

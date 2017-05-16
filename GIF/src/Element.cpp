@@ -6,12 +6,16 @@
 
 #include <iostream>
 
+#include "GIF.h"
+
 using namespace std;
 using namespace glm;
 using namespace GIF;
 
-Element::Element(): m__points(), m__shader()
+Element::Element(string textureName): m__points(), m__shader(), m__texture()
 {
+
+    m__texture = Gif::getTexture(textureName);
 
     m__shader = new Shader("default-120");
     m__shader->load();
@@ -31,10 +35,10 @@ void Element::load()
 {
 
 	int sizeVerticesBytes = this->getPointsCount() * 3 * sizeof(float);
-	//int sizeUVsBytes = this->getUVsSize();
+	int sizeUVsBytes = this->getUVsSize() * 2 * sizeof(float);
 
 	float* vertices = this->getPointsFloat();
-	//float* UVs = this->getUVsFloat();
+	float* UVs = this->getUVsFloat();
 
 	GLuint& idVAO = this->getVAO();
 	GLuint& idVBO = this->getVBO();
@@ -55,11 +59,11 @@ void Element::load()
 
 
 		// Allocation de la mémoire vidéo
-		glBufferData(GL_ARRAY_BUFFER, sizeVerticesBytes/* + sizeUVsBytes + sizeNormalsBytes*3*/, 0, GL_STATIC_DRAW); // * 3 for Tangent and Bytangent
+		glBufferData(GL_ARRAY_BUFFER, sizeVerticesBytes + sizeUVsBytes, 0, GL_STATIC_DRAW); // * 3 for Tangent and Bytangent
 
 		// Transfert des données
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeVerticesBytes, vertices);
-		//glBufferSubData(GL_ARRAY_BUFFER, sizeVerticesBytes,  sizeUVsBytes,  UVs);
+		glBufferSubData(GL_ARRAY_BUFFER, sizeVerticesBytes,  sizeUVsBytes,  UVs);
 
 	// Déverrouillage de l'objet
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -89,8 +93,8 @@ void Element::load()
 			glEnableVertexAttribArray(0);
 
 			//UVs
-			//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeVerticesBytes));
-			//glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeVerticesBytes));
+			glEnableVertexAttribArray(1);
 
 		// Déverrouillage du VBO
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -98,10 +102,10 @@ void Element::load()
 	// Déverrouillage du VAO
 	glBindVertexArray(0);
 
-	/*
+    /*
 	cout << "[Element] load() : Vertices : \n";
-	vector<vec3> vecVertices = this->getVertices();
-	for (int i = 0; i < this->getVertexCount(); i++)
+	vector<vec3> vecVertices = this->getPoints();
+	for (int i = 0; i < this->getPointsCount(); i++)
 	{
 		cout << vecVertices[i].x << ", " << vecVertices[i].y << ", " << vecVertices[i].z << endl;
 	}
@@ -110,10 +114,10 @@ void Element::load()
 	{
 		cout << m__UVs[i].x << ", " << m__UVs[i].y << endl;
 	}
-	*/
+    */
 
 	free(vertices);
-	//free(UVs);
+	free(UVs);
 
 
 }
@@ -136,14 +140,19 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 
 	m__shader->envoyer1I("texture", 0);
 
-	/*glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, texture);*/
+    if(m__texture)
+    {
+
+	    glActiveTexture(GL_TEXTURE0);
+	    glBindTexture(GL_TEXTURE_2D, m__texture->getID());
+
+    }
 
 	glDrawArrays(GL_TRIANGLES, 0, getPointsCount());
 
-	/*glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, 0);
-*/
+
 	glBindVertexArray(0);
 
 	glUseProgram(0);
@@ -169,7 +178,6 @@ float* Element::getPointsFloat()
 }
 
 
-/*
 //=====UVs=====
 int Element::getUVCount()
 {
@@ -183,14 +191,6 @@ int Element::getUVsSize()
 {
 
 	return m__UVs.size() * 2 * sizeof(float);
-
-}
-
-
-vector<vec2> Element::getUVs()
-{
-
-	return m__UVs;
 
 }
 
@@ -210,8 +210,10 @@ float* Element::getUVsFloat()
 
 	return res;
 
-}*/
+}
 
+
+//=====Private=====
 float* Element::vec3ToFloat(vector<vec3> tab)
 {
 

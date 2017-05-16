@@ -30,6 +30,9 @@ namespace GIF
             static void unload();
 
             static Window* createWindow(std::string id, std::string title);
+            static Texture* createTexture(std::string id, std::string name);
+
+            static Texture* getTexture(std::string name);
 
         private:
 

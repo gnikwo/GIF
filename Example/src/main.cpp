@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <functional>
 
 #include <GIF.h>
 #include <Button.h>
@@ -13,7 +14,12 @@ int main(int argc, char** argv)
 
     Window* w = Gif::init();
 
-    Button* b = new Button();
+    Gif::createTexture("default", "default.png");
+
+    Button* b = new Button([](){
+            cout << "plop" << endl;
+    });
+
     b->load();
 
     w->addElement(b);
@@ -26,6 +32,11 @@ int main(int argc, char** argv)
 
     });
 
+    controller->bind(GLFW_KEY_A, [&b](double x, double y) {
+
+        b->action();
+
+    });
 
 	while(!w->shouldClose())
 	{

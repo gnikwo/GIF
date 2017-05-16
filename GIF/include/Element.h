@@ -18,7 +18,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "Shader.h"
-
+#include "Texture.h"
 
 #ifndef BUFFER_OFFSET
 
@@ -58,12 +58,17 @@ namespace GIF{
              */
             GIF::Shader* m__shader;
 
+            /**
+             *
+             */
+            Texture* m__texture;
+
         public:
 
             /**
              *
              */
-            Element();
+            Element(std::string textureName = "default");
 
             /**
              *
@@ -105,6 +110,32 @@ namespace GIF{
              */
             std::vector<glm::vec3> getPoints(){ return m__points; };
 
+
+            /**
+             *
+             */
+            void addUV(glm::vec2 uv){ m__UVs.push_back(uv); };
+
+            /**
+             *
+             */
+            void removeUV(int i){ m__UVs.erase(m__UVs.begin()+i); };
+
+            /**
+             *
+             */
+            void setUVs(std::vector<glm::vec2> uvs){ m__UVs = uvs; };
+
+            /**
+             *
+             */
+            glm::vec2 getUV(int i){ return m__UVs[i]; };
+
+            /**
+             *
+             */
+            std::vector<glm::vec2> getUVs(){ return m__UVs; };
+
             /**
              *
              */
@@ -138,22 +169,12 @@ namespace GIF{
             /**
              *
              */
-            void setUVs(std::vector<glm::vec2> uvs) { m__UVs = uvs; };
-
-            /**
-             *
-             */
             int getUVCount();
 
             /**
              *
              */
             int getUVsSize();
-
-            /**
-             *
-             */
-            std::vector<glm::vec2> getUVs();
 
             /**
              *
