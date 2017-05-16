@@ -9,6 +9,9 @@
 using namespace std;
 using namespace GIF;
 
+Library<Texture>* Gif::m__textureLibrary = new Library<Texture>();
+Library<Window>* Gif::m__windowLibrary = new Library<Window>();
+
 using GIF::Window;
 
 Gif::Gif()
@@ -78,9 +81,10 @@ Window* Gif::init()
 
 void Gif::unload()
 {
-
+	Gif::m__textureLibrary->flush();
+	Gif::m__windowLibrary->flush();
+	
 	glfwTerminate();
-
 }
 
 

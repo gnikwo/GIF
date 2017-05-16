@@ -93,6 +93,15 @@ namespace GIF
 
             //=============GETTERS and SETTERS=================
 
+			//Window tout simplement
+			GLFWwindow* getWindow(){return m__window;};
+			
+			//Height
+			int getHeight(){return m__height;}
+			
+			//Width
+			int getWidth(){return m__width;}
+			
             //Background color
             void setbackgroundColor(glm::vec3 color){ m__backgroundColor = color; };
             glm::vec3 getBackgroundColor(){ return m__backgroundColor; };
@@ -100,6 +109,8 @@ namespace GIF
             //Elements
             void addElement(Element* element){ m__elements.push_back(element); };
             void removeElement(int i){ m__elements.erase(m__elements.begin()+i); };
+			
+			
 
         private:
 

@@ -15,6 +15,8 @@ add_library(GIF SHARED
     src/ThreadInterface.cpp
     src/ThreadUnix.cpp
     src/Button.cpp
+	src/Library.cpp
+	src/Controller.cpp
 )
 
 #Compilation args
