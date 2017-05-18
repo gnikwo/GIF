@@ -15,12 +15,18 @@ int main(int argc, char** argv)
     Window* w = Gif::init();
 
     Gif::createTexture("default", "default.png");
+    Gif::createTexture("chef", "503.png");
 
-    Button* b = new Button([](){
+    Button* b = (Button*) Gif::addElement("Test", new Button([](){
             cout << "plop" << endl;
-    });
+    }));
 
     b->load();
+
+    b->addTexture("diffuse_1", "default");
+    b->addTexture("diffuse_2", "chef");
+
+    b->setPos(glm::vec2(1.0, 1.0));
 
     w->addElement(b);
 
@@ -46,6 +52,9 @@ int main(int argc, char** argv)
         w->render();
 
 	}
+
+    delete(controller);
+    delete(b);
 
 	Gif::unload();
     return 0;

@@ -32,7 +32,11 @@ namespace GIF
             static Window* createWindow(std::string id, std::string title);
             static Texture* createTexture(std::string id, std::string name);
 
+            static Element* addElement(std::string, GIF::Element* element);
+
             static Texture* getTexture(std::string name);
+
+            static bool click(Window* w, glm::vec2 pos);
 
         private:
 
@@ -40,8 +44,11 @@ namespace GIF
             virtual ~Gif();
 
             static void error_callback(int error, const char* description);
+
 			static Library<Texture>* m__textureLibrary;
             static Library<Window>* m__windowLibrary;
+            static Library<Element>* m__elementLibrary;
+            static std::map<glm::vec3, Element*> m__elementByColor;
 
     };
 

@@ -19,10 +19,14 @@ namespace GIF{
 
             std::function<void()> m__action;
 
+            int m__pressed;
+
         public:
 
-            Button(std::function<void()> action, std::string textureName = "default");
+            Button(std::function<void()> action);
             virtual ~Button();
+
+            void click() { action(); };
 
             void action();
 

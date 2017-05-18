@@ -5,12 +5,15 @@
 #include "GIF.h"
 
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
+using namespace glm;
 using namespace GIF;
 
 Library<Texture>* Gif::m__textureLibrary = new Library<Texture>();
 Library<Window>* Gif::m__windowLibrary = new Library<Window>();
+Library<Element>* Gif::m__elementLibrary = new Library<Element>();
 
 using GIF::Window;
 
@@ -24,7 +27,9 @@ Gif::Gif()
 Gif::~Gif()
 {
 
-
+    delete(m__textureLibrary);
+    delete(m__windowLibrary);
+    delete(m__elementLibrary);
 
 }
 
@@ -37,6 +42,9 @@ Window* Gif::init()
 {
 
 	cout << "[GIF] init" << endl;
+
+    /* initialize random seed: */
+    srand (time(NULL));
 
 	glfwSetErrorCallback(error_callback);
 
@@ -75,6 +83,8 @@ Window* Gif::init()
 
 	}
 
+    w->initClickTexture();
+
 	return w;
 }
 
@@ -82,8 +92,10 @@ Window* Gif::init()
 void Gif::unload()
 {
 
-	Gif::m__textureLibrary->flush();
+    cout << "[Gif] unload" << endl;
+
 	Gif::m__windowLibrary->flush();
+	Gif::m__textureLibrary->flush();
 
 	glfwTerminate();
 
@@ -98,6 +110,16 @@ Window* Gif::createWindow(string id, string title)
     m__windowLibrary->add(id, w);
 
     return w;
+
+}
+
+
+Element* Gif::addElement(std::string id, Element* element)
+{
+
+    m__elementLibrary->add(id, element);
+
+    return element;
 
 }
 
@@ -123,6 +145,32 @@ Texture* Gif::getTexture(string name)
         return m__textureLibrary->get(name);
 
     return nullptr;
+
+}
+
+
+bool Gif::click(Window* w, vec2 pos)
+{
+
+    vec3 color = w->getClickColor(pos);
+
+    cout << "Test 1: " << color.x << endl;
+
+    for(auto iter : m__elementLibrary->getMap())
+    {
+
+        cout << "Test 2: " << iter.second->getClickColor().x << endl;
+        if(color == iter.second->getClickColor())
+        {
+
+            iter.second->click();
+            return true;
+
+        }
+
+    }
+
+    return false;
 
 }
 

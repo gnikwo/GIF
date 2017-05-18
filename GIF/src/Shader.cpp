@@ -17,11 +17,11 @@ Shader::Shader(std::string shaderName): m__programID(),
 										m__tessEvaluationID(),
 										m__geometryID(),
 										m__fragmentID(),
-										m__vertexShaderFile("Shaders/" + shaderName + "/" + shaderName + ".vert"),
-										m__tessControlShaderFile("Shaders/" + shaderName + "/" + shaderName + ".tese"),
-										m__tessEvaluationShaderFile("Shaders/" + shaderName + "/" + shaderName + ".tesc"),
-										m__geometryShaderFile("Shaders/" + shaderName + "/" + shaderName + ".geom"),
-										m__fragmentShaderFile("Shaders/" + shaderName + "/" + shaderName + ".frag")
+										m__vertexShaderFile("Shaders/" + shaderName + "/shader.vert"),
+										m__tessControlShaderFile("Shaders/" + shaderName + "/shader.tese"),
+										m__tessEvaluationShaderFile("Shaders/" + shaderName + "/shader.tesc"),
+										m__geometryShaderFile("Shaders/" + shaderName + "/shader.geom"),
+										m__fragmentShaderFile("Shaders/" + shaderName + "/shader.frag")
 {
 
 	cout << this << " [Shader] constructor" << endl;

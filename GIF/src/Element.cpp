@@ -12,13 +12,16 @@ using namespace std;
 using namespace glm;
 using namespace GIF;
 
-Element::Element(string textureName): m__points(), m__shader(), m__texture()
+Element::Element(): m__clickColor(), m__pos(), m__points(), m__vao(), m__vbo(), m__shader(), m__clickShader(), m__textures(), m__intUniforms()
 {
 
-    m__texture = Gif::getTexture(textureName);
+    m__clickColor = vec3(rand() % 256, rand() % 256, rand() % 256);
 
     m__shader = new Shader("default-120");
     m__shader->load();
+
+    m__clickShader = new Shader("click-default-120");
+    m__clickShader->load();
 
 }
 
@@ -26,13 +29,14 @@ Element::Element(string textureName): m__points(), m__shader(), m__texture()
 Element::~Element()
 {
 
-
+    delete(m__shader);
 
 }
 
 
 void Element::load()
 {
+
 
 	int sizeVerticesBytes = this->getPointsCount() * 3 * sizeof(float);
 	int sizeUVsBytes = this->getUVsSize() * 2 * sizeof(float);
@@ -59,7 +63,7 @@ void Element::load()
 
 
 		// Allocation de la mémoire vidéo
-		glBufferData(GL_ARRAY_BUFFER, sizeVerticesBytes + sizeUVsBytes, 0, GL_STATIC_DRAW); // * 3 for Tangent and Bytangent
+		glBufferData(GL_ARRAY_BUFFER, sizeVerticesBytes + sizeUVsBytes, 0, GL_STATIC_DRAW);
 
 		// Transfert des données
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeVerticesBytes, vertices);
@@ -126,32 +130,119 @@ void Element::load()
 void Element::render(glm::mat4 projection, glm::mat4 model)
 {
 
+    Shader* s = m__shader;
+
     glEnable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 
-	glUseProgram(m__shader->getProgramID());
+	glUseProgram(s->getProgramID());
 
 	glBindVertexArray(getVAO());
 
-	m__shader->envoyerMat4("projection", projection);
-	m__shader->envoyerMat4("model", model);
+    //model = glm::translate(model, glm::vec3(m__pos, 0.f));
 
-	//s->envoyerVec3("colorDiffuse", getMaterial()->getDiffuseColor());
+	s->envoyerMat4("projection", projection);
+    s->envoyerMat4("model", model);
 
-	m__shader->envoyer1I("texture", 0);
+    s->envoyerVec3("clickColor", m__clickColor);
 
-    if(m__texture)
+    for(const auto iter : m__intUniforms)
     {
 
-	    glActiveTexture(GL_TEXTURE0);
-	    glBindTexture(GL_TEXTURE_2D, m__texture->getID());
+        s->envoyer1I(iter.first, *(iter.second));
 
     }
 
-	glDrawArrays(GL_TRIANGLES, 0, getPointsCount());
+    {//Bind textures
+        int i = 0;
+        for(auto iter : m__textures)
+        {
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, 0);
+            s->envoyer1I(iter.first, i);
+
+            glActiveTexture(GL_TEXTURE0 + i);
+            glBindTexture(GL_TEXTURE_2D, Gif::getTexture(iter.second)->getID());
+
+            i++;
+
+        }
+    }
+
+        //Drawcall
+	    glDrawArrays(GL_TRIANGLES, 0, getPointsCount());
+
+    {//Unbind Textures
+        int i = 0;
+        for(auto iter : m__textures)
+        {
+
+            glActiveTexture(GL_TEXTURE0 + i);
+            glBindTexture(GL_TEXTURE_2D, 0);
+            i++;
+
+        }
+    }
+
+	glBindVertexArray(0);
+
+	glUseProgram(0);
+
+}
+
+
+void Element::clickRender(glm::mat4 projection, glm::mat4 model)
+{
+
+    glEnable(GL_DEPTH_TEST);
+	glDisable(GL_CULL_FACE);
+
+	glUseProgram(m__clickShader->getProgramID());
+
+	glBindVertexArray(getVAO());
+
+    //model = glm::translate(model, glm::vec3(m__pos, 0.f));
+
+	m__clickShader->envoyerMat4("projection", projection);
+	m__clickShader->envoyerMat4("model", model);
+
+    m__clickShader->envoyerVec3("clickColor", m__clickColor);
+
+    for(const auto iter : m__intUniforms)
+    {
+
+        m__clickShader->envoyer1I(iter.first, *(iter.second));
+
+    }
+
+    {//Bind textures
+        int i = 0;
+        for(auto iter : m__textures)
+        {
+
+            m__clickShader->envoyer1I(iter.first, i);
+
+            glActiveTexture(GL_TEXTURE0 + i);
+            glBindTexture(GL_TEXTURE_2D, Gif::getTexture(iter.second)->getID());
+
+            i++;
+
+        }
+    }
+
+        //Drawcall
+	    glDrawArrays(GL_TRIANGLES, 0, getPointsCount());
+
+    {//Unbind Textures
+        int i = 0;
+        for(auto iter : m__textures)
+        {
+
+            glActiveTexture(GL_TEXTURE0 + i);
+            glBindTexture(GL_TEXTURE_2D, 0);
+            i++;
+
+        }
+    }
 
 	glBindVertexArray(0);
 

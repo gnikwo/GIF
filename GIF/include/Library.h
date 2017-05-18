@@ -56,7 +56,18 @@ namespace GIF
                 void flush()
                 {
 
+                    for(auto iter: m__objects)
+                        delete(iter.second);
+
                     m__objects.clear();
+
+                }
+
+
+                std::map<std::string, T*> getMap()
+                {
+
+                    return m__objects;
 
                 }
 

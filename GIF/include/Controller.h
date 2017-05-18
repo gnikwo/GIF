@@ -6,6 +6,11 @@
 #include <algorithm>
 #include <functional>
 
+// Includes GLM
+#include <glm/glm.hpp>
+#include <glm/gtx/transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -36,6 +41,8 @@ namespace GIF
         private:
 
             std::map<const int, std::function<void(double x, double y)>> m__keyBindings;
+            std::map<const int, int> m__lastStates;
+            std::map<const int, int> m__lastClickStates;
 
             std::function<void(double x, double y, double dx, double dy)> m__mouseEvent;
 
