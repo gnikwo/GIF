@@ -26,6 +26,8 @@ namespace GIF{
             Thread();
             virtual ~Thread();
 
+            static void sleep(int ms);
+
     };
 
 }

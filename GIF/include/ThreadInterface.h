@@ -14,6 +14,8 @@ namespace GIF
             ThreadInterface();
             virtual ~ThreadInterface();
 
+            static void sleep(int ms);
+
     };
 
 }

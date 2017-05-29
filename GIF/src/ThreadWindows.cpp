@@ -10,7 +10,7 @@
 using namespace std;
 using namespace GIF;
 
-ThreadWindows::ThreadWindows()
+Thread::Thread()
 {
 
 
@@ -18,11 +18,16 @@ ThreadWindows::ThreadWindows()
 }
 
 
-ThreadWindows::~ThreadWindows()
+Thread::~Thread()
 {
 
 
 
 }
 
+void Thread::sleep(int ms)
+{
 
+    Sleep(ms);
+
+}

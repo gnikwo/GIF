@@ -5,6 +5,7 @@
 #include "Element.h"
 
 #include <iostream>
+#include <stdlib.h>
 
 #include "GIF.h"
 
