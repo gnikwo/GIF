@@ -4,6 +4,7 @@
 !Analyse
 !GIF
 !GIF/include
+!GIF/include/*
 !Example
 !Shaders
 !Textures
