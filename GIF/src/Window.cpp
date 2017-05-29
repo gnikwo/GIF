@@ -12,7 +12,8 @@ using namespace std;
 using namespace glm;
 using namespace GIF;
 
-GIF::Window::Window(std::string title, int width, int height): m__window(),
+GIF::Window::Window(std::string title, int width, int height): Controller(),
+                                                                m__window(),
                                                                 m__title(title),
                                                                 m__width(width),
                                                                 m__height(height),

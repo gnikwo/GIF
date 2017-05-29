@@ -12,7 +12,7 @@ using namespace std;
 using namespace glm;
 using namespace GIF;
 
-Element::Element(): m__clickColor(), m__pos(), m__points(), m__vao(), m__vbo(), m__shader(), m__clickShader(), m__textures(), m__intUniforms()
+Element::Element(): Controller(), m__clickColor(), m__pos(), m__points(), m__vao(), m__vbo(), m__shader(), m__clickShader(), m__textures(), m__intUniforms()
 {
 
     m__clickColor = vec3(rand() % 256, rand() % 256, rand() % 256);
@@ -30,6 +30,7 @@ Element::~Element()
 {
 
     delete(m__shader);
+    delete(m__clickShader);
 
 }
 
@@ -144,7 +145,7 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 	s->envoyerMat4("projection", projection);
     s->envoyerMat4("model", model);
 
-    s->envoyerVec3("clickColor", m__clickColor);
+    //s->envoyerVec3("clickColor", m__clickColor);
 
     for(const auto iter : m__intUniforms)
     {

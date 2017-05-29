@@ -38,7 +38,7 @@ Gif::~Gif()
  * Initialize Glfw and Glew and returns a Window
  * @return returns a window
  **/
-Window* Gif::init()
+void Gif::init()
 {
 
 	cout << "[GIF] init" << endl;
@@ -51,14 +51,14 @@ Window* Gif::init()
 	if (!glfwInit()) {
 
 		std::cout << "Failed to initialize GLFW\n";
-		return nullptr;
+		//return nullptr;
 
 	}
 
 	//=====================
 
-    Window* w = Gif::createWindow("Window_1", "Test");
-	w->load();
+    //Window* w = Gif::createWindow("Window_1", "Test");
+	//w->load();
 
 	//=====================
 
@@ -83,9 +83,9 @@ Window* Gif::init()
 
 	}
 
-    w->initClickTexture();
+    //w->initClickTexture();
 
-	return w;
+	//return w;
 }
 
 
@@ -110,6 +110,16 @@ Window* Gif::createWindow(string id, string title)
     m__windowLibrary->add(id, w);
 
     return w;
+
+}
+
+
+Window* Gif::addWindow(std::string id, Window* window)
+{
+
+    m__windowLibrary->add(id, window);
+
+    return window;
 
 }
 

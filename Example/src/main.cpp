@@ -12,14 +12,15 @@ using namespace GIF;
 int main(int argc, char** argv)
 {
 
-    Window* w = Gif::init();
+    Gif::init();
+
+    Window* w = Gif::addWindow("main", new Window("Test"));
+    w->load();
 
     Gif::createTexture("default", "default.png");
     Gif::createTexture("chef", "503.png");
 
-    Button* b = (Button*) Gif::addElement("Test", new Button([](){
-            cout << "plop" << endl;
-    }));
+    Button* b = (Button*) Gif::addElement("Test", new Button());
 
     b->load();
 
@@ -30,15 +31,13 @@ int main(int argc, char** argv)
 
     w->addElement(b);
 
-	Controller* controller = new Controller(); // a Controller to bind the ESCAPE key to the Window
-
-    controller->bind(GLFW_KEY_ESCAPE, [&w](double x, double y) {
+    w->bind(GLFW_KEY_ESCAPE, [&w](double x, double y) {
 
         w->close();
 
     });
 
-    controller->bind(GLFW_KEY_A, [&b](double x, double y) {
+    b->bind(GLFW_KEY_A, [&b](double x, double y) {
 
         b->action();
 
@@ -47,14 +46,12 @@ int main(int argc, char** argv)
 	while(!w->shouldClose())
 	{
 
-        controller->check(w);
+        w->check(w);
+        b->check(w);
 
         w->render();
 
 	}
-
-    delete(controller);
-    delete(b);
 
 	Gif::unload();
     return 0;

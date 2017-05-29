@@ -23,7 +23,7 @@ namespace GIF{
 
         public:
 
-            Button(std::function<void()> action);
+            Button();
             virtual ~Button();
 
             void click() { action(); };

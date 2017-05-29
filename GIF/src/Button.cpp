@@ -15,7 +15,7 @@ using namespace std;
 using namespace glm;
 using namespace GIF;
 
-Button::Button(function<void()> action): Element(), m__action(action), m__pressed(false)
+Button::Button(): Element(), m__action(), m__pressed(false)
 {
 
     addPoint(vec3(-0.5, -0.5, 0.0));
@@ -50,6 +50,7 @@ void Button::action()
 
     m__pressed = !m__pressed;
 
-    m__action();
+    if(m__action)
+        m__action();
 
 }

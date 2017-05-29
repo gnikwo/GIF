@@ -26,12 +26,13 @@ namespace GIF
 
         public:
 
-            static Window* init();
+            static void init();
             static void unload();
 
             static Window* createWindow(std::string id, std::string title);
             static Texture* createTexture(std::string id, std::string name);
 
+            static Window* addWindow(std::string id, GIF::Window* window);
             static Element* addElement(std::string, GIF::Element* element);
 
             static Texture* getTexture(std::string name);

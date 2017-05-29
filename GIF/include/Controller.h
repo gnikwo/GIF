@@ -14,10 +14,10 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Window.h"
-
 namespace GIF
 {
+
+    class Window;
 
     class Controller
     {
@@ -33,7 +33,6 @@ namespace GIF
 
             void check(Window* w);
 
-            void setMouseEvent(std::function<void(double x, double y, double dx, double dy)> event) { m__mouseEvent = event; };
 
             void toggleVisibleCursor() { m__visibleCursor = !m__visibleCursor; };
             void toggleCaptureCursor() { m__captureCursor = !m__captureCursor; };
@@ -43,8 +42,6 @@ namespace GIF
             std::map<const int, std::function<void(double x, double y)>> m__keyBindings;
             std::map<const int, int> m__lastStates;
             std::map<const int, int> m__lastClickStates;
-
-            std::function<void(double x, double y, double dx, double dy)> m__mouseEvent;
 
             bool m__visibleCursor;
             bool m__captureCursor;

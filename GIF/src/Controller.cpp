@@ -1,12 +1,14 @@
 #include "Controller.h"
 
 #include "GIF.h"
+#include "Window.h"
+
 
 using namespace std;
 using namespace glm;
 using namespace GIF;
 
-Controller::Controller(): m__keyBindings(), m__visibleCursor(false), m__captureCursor(true)
+Controller::Controller(): m__keyBindings(), m__visibleCursor(true), m__captureCursor(false)
 {
 
 
@@ -53,9 +55,6 @@ void Controller::check(Window* w)
 	glfwGetCursorPos(w->getWindow(), &x, &y);
 	double dx = x - double(w->getWidth())/2, dy = y - double(w->getHeight())/2;
 
-	if(m__mouseEvent)
-		m__mouseEvent(x, y, dx, dy);
-
 
     for (const auto p : m__keyBindings)
 	{
@@ -81,9 +80,9 @@ void Controller::check(Window* w)
 
     m__lastClickStates[GLFW_MOUSE_BUTTON_LEFT] = state;
 
-	//glfwSetInputMode(w->getWindow(), GLFW_CURSOR, (m__visibleCursor ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN));
+	glfwSetInputMode(w->getWindow(), GLFW_CURSOR, (m__visibleCursor ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN));
 
-	//if(m__captureCursor)
-	//	glfwSetCursorPos(w->getWindow(), double(w->getWidth())/2, double(w->getHeight())/2);
+	if(m__captureCursor)
+		glfwSetCursorPos(w->getWindow(), double(w->getWidth())/2, double(w->getHeight())/2);
 
 }

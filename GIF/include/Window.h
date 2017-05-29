@@ -18,11 +18,13 @@
 #include <GLFW/glfw3native.h>
 
 #include "Element.h"
+#include "Controller.h"
 
 namespace GIF
 {
 
-    class Window{
+    class Window: public GIF::Controller
+    {
 
         private:
 

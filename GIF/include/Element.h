@@ -20,6 +20,7 @@
 
 #include "Shader.h"
 #include "Texture.h"
+#include "Controller.h"
 
 #ifndef BUFFER_OFFSET
 
@@ -29,7 +30,7 @@
 
 namespace GIF{
 
-    class Element
+    class Element: public Controller
     {
 
         private:
