@@ -2,9 +2,7 @@
 !.gitignore
 !CMakeLists.txt
 !Analyse
-!GIF
-!GIF/include
-!GIF/include/*
+!GIF/
 !Example
 !Shaders
 !Textures
