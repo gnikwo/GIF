@@ -20,7 +20,7 @@ GIF::Window::Window(std::string title, int width, int height): Controller(),
                                                                 m__title(title),
                                                                 m__width(width),
                                                                 m__height(height),
-                                                                m__backgroundColor(vec3(0.2, 0.2, 0.2)),
+                                                                m__backgroundColor(vec3(0.9, 0.9, 0.9)),
                                                                 m__elements(),
                                                                 m__framebuffer(),
                                                                 m__clickTexture()
