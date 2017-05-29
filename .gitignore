@@ -1,9 +1,9 @@
-
 !.gitignore
 !CMakeLists.txt
 !Analyse
 !GIF
 !Example
+!Shaders
 !Shaders/*
 !Textures
 !deps/soil/src
