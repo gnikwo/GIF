@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 2.8.9)
 project(GIF CXX)
 
-
 #========GIF========
+
+if(WIN32)
+    set(OS_dependant_sources src/MutexWindows.cpp src/ThreadWindows.cpp)
+else()
+    set(OS_dependant_sources src/MutexUnix.cpp src/ThreadUnix.cpp)
+endif()
+
 #Lib declaration
 add_library(GIF SHARED
     src/GIF.cpp
@@ -11,9 +17,8 @@ add_library(GIF SHARED
     src/Texture.cpp
     src/Element.cpp
     src/MutexInterface.cpp
-    src/MutexWindows.cpp
     src/ThreadInterface.cpp
-    src/ThreadWindows.cpp
+    ${OS_dependant_sources}
     src/Button.cpp
 	src/Library.cpp
 	src/Controller.cpp

@@ -5,6 +5,7 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
+#include <iostream>
 #include <string>
 #include <functional>
 
@@ -29,6 +30,10 @@ namespace GIF{
             void click() { action(); };
 
             void action();
+
+            bool getPressed() { return m__pressed; };
+
+            void setAction(std::function<void()> action) { m__action = action; };
 
     };
 

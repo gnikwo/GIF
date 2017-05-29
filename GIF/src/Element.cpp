@@ -141,12 +141,9 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 
 	glBindVertexArray(getVAO());
 
-    //model = glm::translate(model, glm::vec3(m__pos, 0.f));
-
 	s->envoyerMat4("projection", projection);
     s->envoyerMat4("model", model);
-
-    //s->envoyerVec3("clickColor", m__clickColor);
+    s->envoyerVec3("position", glm::vec3(m__pos, 0.f));
 
     for(const auto iter : m__intUniforms)
     {
@@ -202,10 +199,9 @@ void Element::clickRender(glm::mat4 projection, glm::mat4 model)
 
 	glBindVertexArray(getVAO());
 
-    //model = glm::translate(model, glm::vec3(m__pos, 0.f));
-
 	m__clickShader->envoyerMat4("projection", projection);
 	m__clickShader->envoyerMat4("model", model);
+    m__clickShader->envoyerVec3("position", glm::vec3(m__pos, 0.f));
 
     m__clickShader->envoyerVec3("clickColor", m__clickColor);
 

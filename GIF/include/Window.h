@@ -68,6 +68,11 @@ namespace GIF
              */
             GLuint m__clickTexture;
 
+            std::map<const int, int> m__lastClickStates;
+
+            bool m__visibleCursor;
+            bool m__captureCursor;
+
         public:
 
             /**
@@ -119,6 +124,12 @@ namespace GIF
             /**
              *
              */
+            void clickCheck();
+
+
+            /**
+             *
+             */
             glm::vec3 getClickColor(glm::vec2);
 
             //=============GETTERS and SETTERS=================
@@ -139,6 +150,12 @@ namespace GIF
             //Elements
             void addElement(Element* element){ m__elements.push_back(element); };
             void removeElement(int i){ m__elements.erase(m__elements.begin()+i); };
+
+
+            void toggleVisibleCursor() { m__visibleCursor = !m__visibleCursor; };
+            void toggleCaptureCursor() { m__captureCursor = !m__captureCursor; };
+
+
 
 
 
@@ -174,7 +191,6 @@ namespace GIF
             static void mouse_move_callback(GLFWwindow* window, double x, double y);
 
     };
-
 }
 
 #endif

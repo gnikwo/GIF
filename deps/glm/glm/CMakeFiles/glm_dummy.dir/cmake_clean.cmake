@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/glm_dummy.dir/detail/dummy.cpp.obj"
-  "CMakeFiles/glm_dummy.dir/detail/glm.cpp.obj"
+  "CMakeFiles/glm_dummy.dir/detail/dummy.cpp.o"
+  "CMakeFiles/glm_dummy.dir/detail/glm.cpp.o"
   "glm_dummy.pdb"
-  "glm_dummy.exe"
-  "glm_dummy.exe.manifest"
-  "libglm_dummy.dll.a"
+  "glm_dummy"
 )
 
 # Per-language clean rules from dependency scanning.

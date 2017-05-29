@@ -25,6 +25,6 @@ Thread::~Thread()
 void Thread::sleep(int ms)
 {
 
-    this_thread::sleep_for(std::chrono::milliseconds(framerate - elapsedTime));
+    this_thread::sleep_for(std::chrono::milliseconds(ms));
 
 }

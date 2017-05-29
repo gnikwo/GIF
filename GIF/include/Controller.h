@@ -27,24 +27,17 @@ namespace GIF
             Controller();
             virtual ~Controller();
 
-            void bind(const int key, std::function<void(double x, double y)> action);
+            void bind(const int key, std::function<void()> action);
             void unbind(const int key);
             void unbind();
 
             void check(Window* w);
 
 
-            void toggleVisibleCursor() { m__visibleCursor = !m__visibleCursor; };
-            void toggleCaptureCursor() { m__captureCursor = !m__captureCursor; };
-
         private:
 
-            std::map<const int, std::function<void(double x, double y)>> m__keyBindings;
+            std::map<const int, std::function<void()>> m__keyBindings;
             std::map<const int, int> m__lastStates;
-            std::map<const int, int> m__lastClickStates;
-
-            bool m__visibleCursor;
-            bool m__captureCursor;
 
     };
 

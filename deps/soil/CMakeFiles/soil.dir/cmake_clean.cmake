@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/soil.dir/src/image_helper.c.obj"
-  "CMakeFiles/soil.dir/src/stb_image_aug.c.obj"
-  "CMakeFiles/soil.dir/src/image_DXT.c.obj"
-  "CMakeFiles/soil.dir/src/SOIL.c.obj"
+  "CMakeFiles/soil.dir/src/image_helper.c.o"
+  "CMakeFiles/soil.dir/src/stb_image_aug.c.o"
+  "CMakeFiles/soil.dir/src/image_DXT.c.o"
+  "CMakeFiles/soil.dir/src/SOIL.c.o"
   "libsoil.pdb"
   "libsoil.a"
 )

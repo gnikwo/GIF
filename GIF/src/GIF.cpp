@@ -40,7 +40,7 @@ Gif::~Gif()
  * Initialize Glfw and Glew and returns a Window
  * @return returns a window
  **/
-void Gif::init()
+Window* Gif::init()
 {
 
 	cout << "[GIF] init" << endl;
@@ -59,16 +59,17 @@ void Gif::init()
 
 	//=====================
 
-    //Window* w = Gif::createWindow("Window_1", "Test");
-	//w->load();
+    Window* w = Gif::createWindow("main", "Test");
+	w->load();
 
 	//=====================
 
 	glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); //OpenGL 4.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2); //OpenGL 2.0
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
+
 
 	// On initialise GLEW
 	GLenum initialisationGLEW(glewInit());
@@ -85,9 +86,9 @@ void Gif::init()
 
 	}
 
-    //w->initClickTexture();
+    w->initClickTexture();
 
-	//return w;
+	return w;
 }
 
 
@@ -175,6 +176,7 @@ bool Gif::click(Window* w, vec2 pos)
         if(color == iter.second->getClickColor())
         {
 
+            cout << "Test 3" << endl;
             iter.second->click();
             return true;
 

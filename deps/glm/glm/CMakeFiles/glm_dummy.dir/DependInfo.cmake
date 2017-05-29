@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/guy/gif/deps/glm/glm/detail/dummy.cpp" "C:/Users/guy/gif/deps/glm/glm/CMakeFiles/glm_dummy.dir/detail/dummy.cpp.obj"
-  "C:/Users/guy/gif/deps/glm/glm/detail/glm.cpp" "C:/Users/guy/gif/deps/glm/glm/CMakeFiles/glm_dummy.dir/detail/glm.cpp.obj"
+  "/home/nabos/GIF/deps/glm/glm/detail/dummy.cpp" "/home/nabos/GIF/deps/glm/glm/CMakeFiles/glm_dummy.dir/detail/dummy.cpp.o"
+  "/home/nabos/GIF/deps/glm/glm/detail/glm.cpp" "/home/nabos/GIF/deps/glm/glm/CMakeFiles/glm_dummy.dir/detail/glm.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

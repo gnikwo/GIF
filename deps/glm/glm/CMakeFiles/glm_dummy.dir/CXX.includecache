@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/guy/gif/deps/glm/glm/detail/dummy.cpp
+/home/nabos/GIF/deps/glm/glm/detail/dummy.cpp
 glm/glm.hpp
 -
 glm/ext.hpp
@@ -44,7 +44,7 @@ glm/exponential.hpp
 glm/gtc/random.hpp
 -
 
-C:/Users/guy/gif/deps/glm/glm/detail/glm.cpp
+/home/nabos/GIF/deps/glm/glm/detail/glm.cpp
 glm/glm.hpp
 -
 glm/gtc/quaternion.hpp

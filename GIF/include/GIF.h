@@ -26,7 +26,7 @@ namespace GIF
 
         public:
 
-            static void init();
+            static Window* init();
             static void unload();
 
             static Window* createWindow(std::string id, std::string title);

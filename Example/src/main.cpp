@@ -12,10 +12,8 @@ using namespace GIF;
 int main(int argc, char** argv)
 {
 
-    Gif::init();
 
-    Window* w = Gif::addWindow("main", new Window("Test"));
-    w->load();
+    Window* w = Gif::init();
 
     Gif::createTexture("default", "default.png");
     Gif::createTexture("chef", "503.png");
@@ -27,17 +25,17 @@ int main(int argc, char** argv)
     b->addTexture("diffuse_1", "default");
     b->addTexture("diffuse_2", "chef");
 
-    b->setPos(glm::vec2(1.0, 1.0));
+    b->setPos(glm::vec2(1.0, 1.2));
 
     w->addElement(b);
 
-    w->bind(GLFW_KEY_ESCAPE, [&w](double x, double y) {
+    w->bind(GLFW_KEY_ESCAPE, [&w]() {
 
         w->close();
 
     });
 
-    b->bind(GLFW_KEY_A, [&b](double x, double y) {
+    b->bind(GLFW_KEY_A, [&b]() {
 
         b->action();
 
@@ -47,6 +45,7 @@ int main(int argc, char** argv)
 	{
 
         w->check(w);
+        w->clickCheck();
         b->check(w);
 
         w->render();

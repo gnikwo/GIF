@@ -8,7 +8,8 @@
 #include <chrono>
 #include <cstdlib>
 
-#include "ThreadWindows.h"
+#include "GIF.h"
+#include "Thread.h"
 
 using namespace std;
 using namespace glm;
@@ -157,6 +158,32 @@ void GIF::Window::clickRender()
         }
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+}
+
+
+void GIF::Window::clickCheck()
+{
+
+	double x, y;
+	glfwGetCursorPos(getWindow(), &x, &y);
+	double dx = x - double(getWidth())/2, dy = y - double(getHeight())/2;
+
+    int state = glfwGetMouseButton(getWindow(), GLFW_MOUSE_BUTTON_LEFT);
+    if (m__lastClickStates[GLFW_MOUSE_BUTTON_LEFT] == GLFW_RELEASE && state == GLFW_PRESS)
+    {
+        cout << "Click" << endl;
+        Gif::click(this, vec2(x,y));
+    }
+
+    m__lastClickStates[GLFW_MOUSE_BUTTON_LEFT] = state;
+
+	glfwSetInputMode(getWindow(), GLFW_CURSOR, (m__visibleCursor ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN));
+
+	if(m__captureCursor)
+		glfwSetCursorPos(getWindow(), double(getWidth())/2, double(getHeight())/2);
+
+
 
 }
 

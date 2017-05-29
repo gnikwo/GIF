@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/guy/gif/deps/glm/test
+# Install script for directory: /home/nabos/GIF/deps/glm/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/GIF_all")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -27,12 +27,17 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
+# Install shared libraries without execute permission?
+if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
+  set(CMAKE_INSTALL_SO_NO_EXE "0")
+endif()
+
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/guy/gif/deps/glm/test/bug/cmake_install.cmake")
-  include("C:/Users/guy/gif/deps/glm/test/core/cmake_install.cmake")
-  include("C:/Users/guy/gif/deps/glm/test/gtc/cmake_install.cmake")
-  include("C:/Users/guy/gif/deps/glm/test/gtx/cmake_install.cmake")
+  include("/home/nabos/GIF/deps/glm/test/bug/cmake_install.cmake")
+  include("/home/nabos/GIF/deps/glm/test/core/cmake_install.cmake")
+  include("/home/nabos/GIF/deps/glm/test/gtc/cmake_install.cmake")
+  include("/home/nabos/GIF/deps/glm/test/gtx/cmake_install.cmake")
 
 endif()
 
