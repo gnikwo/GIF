@@ -4,7 +4,7 @@
 !Analyse
 !GIF
 !Example
-!Shaders/
+!Shaders/*
 !Textures
 !deps/soil/src
 !deps/soil/CMakeLists.txt
