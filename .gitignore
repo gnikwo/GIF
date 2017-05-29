@@ -6,7 +6,6 @@
 !Example
 !Shaders
 !Textures
-deps
 !deps/soil/src
 !deps/soil/CMakeLists.txt
 !deps/glm/glm
