@@ -118,7 +118,7 @@ namespace GIF
             /**
              *
              */
-            void clickRender();
+            void clickRender(glm::mat4 projection = glm::mat4(1.0));
 
 
             /**
@@ -138,9 +138,11 @@ namespace GIF
 			GLFWwindow* getWindow(){return m__window;};
 
 			//Height
+            void setHeight(int height){ m__height = height; }
 			int getHeight(){return m__height;}
 
 			//Width
+            void setWidth(int width){ m__width = width; }
 			int getWidth(){return m__width;}
 
             //Background color

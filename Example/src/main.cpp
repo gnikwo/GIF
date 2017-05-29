@@ -25,8 +25,6 @@ int main(int argc, char** argv)
     b->addTexture("diffuse_1", "default");
     b->addTexture("diffuse_2", "chef");
 
-    b->setPos(glm::vec2(1.0, 1.2));
-
     w->addElement(b);
 
     w->bind(GLFW_KEY_ESCAPE, [&w]() {
@@ -41,8 +39,16 @@ int main(int argc, char** argv)
 
     });
 
+    float a = 0;
+    float x = 0.02;
+
 	while(!w->shouldClose())
 	{
+
+        a += x;
+
+        b->setPos(glm::vec2(200, 200));
+        //b->setPos(glm::vec2(500 * sin(a), 500 * cos(a)));
 
         w->check(w);
         w->clickCheck();

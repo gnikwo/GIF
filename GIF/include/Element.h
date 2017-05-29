@@ -48,6 +48,11 @@ namespace GIF{
             /**
              *
              */
+            glm::vec2 m__size;
+
+            /**
+             *
+             */
             std::vector<glm::vec3> m__points;
 
             /**
@@ -137,6 +142,16 @@ namespace GIF{
              *
              */
             glm::vec2 getPos(){ return m__pos; };
+
+            /**
+             *
+             */
+            void setSize(glm::vec2 size){ m__size = size; };
+
+            /**
+             *
+             */
+            glm::vec2 getSize(){ return m__size; };
 
             /**
              *

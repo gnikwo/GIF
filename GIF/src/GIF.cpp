@@ -70,7 +70,6 @@ Window* Gif::init()
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
 	//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
-
 	// On initialise GLEW
 	GLenum initialisationGLEW(glewInit());
 
@@ -173,6 +172,7 @@ bool Gif::click(Window* w, vec2 pos)
     {
 
         cout << "Test 2: " << iter.second->getClickColor().x << endl;
+        cout << "Element: " << iter.second->getPos().x << "x " << iter.second->getPos().y << "y" << endl;
         if(color == iter.second->getClickColor())
         {
 

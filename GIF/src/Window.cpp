@@ -27,6 +27,7 @@ GIF::Window::Window(std::string title, int width, int height): Controller(),
 {
 
 
+
 }
 
 
@@ -63,7 +64,6 @@ void GIF::Window::load()
 	glfwSetWindowCloseCallback(m__window, window_close_callback);
     glfwSetCursorPosCallback(m__window, mouse_move_callback);
 
-
 }
 
 
@@ -80,7 +80,7 @@ void GIF::Window::initClickTexture()
         glBindTexture(GL_TEXTURE_2D, m__clickTexture);
 
             // Give an empty image to OpenGL ( the last "0" )
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m__width, m__height, 0,GL_RGB, GL_UNSIGNED_BYTE, 0);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 1920, 1080, 0,GL_RGB, GL_UNSIGNED_BYTE, 0);
 
             // Poor filtering. Needed !
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -106,7 +106,11 @@ void GIF::Window::render()
 
     int startTime = int(glfwGetTime() * 1000);
 
-        clickRender();
+        mat4 perspective = glm::ortho(0.0f, (float)m__width, 0.0f, (float)m__height, 0.0f, 100.0f);//glm::perspective(90.0, (double)m__width / m__height, 0.1, 500.0); //
+
+        mat4 view = glm::lookAt( glm::vec3( 0, 0, 1 ), glm::vec3( 0.f, 0.f, 0.f ), glm::vec3( 0.0f, 1.0f, 0.0f ));
+
+        clickRender(perspective * view);
 
         glViewport(0, 0, m__width, m__height);
 
@@ -118,7 +122,7 @@ void GIF::Window::render()
         for(auto &element : m__elements)
         {
 
-            element->render();
+            element->render(perspective * view);
 
         }
 
@@ -129,7 +133,7 @@ void GIF::Window::render()
 	int endTime = int(glfwGetTime() * 1000);
 	int elapsedTime = endTime - startTime;
 
-	//cout << elapsedTime << endl;
+	//cout << (1.0 / (elapsedTime / 1000.0)) << " fps "<< endl;
 
     int framerate = 60/1000;
 	if(elapsedTime < framerate)
@@ -138,7 +142,7 @@ void GIF::Window::render()
 }
 
 
-void GIF::Window::clickRender()
+void GIF::Window::clickRender(glm::mat4 projection)
 {
 
     glBindFramebuffer(GL_FRAMEBUFFER, m__framebuffer);
@@ -153,7 +157,7 @@ void GIF::Window::clickRender()
         for(auto &element : m__elements)
         {
 
-            element->clickRender();
+            element->clickRender(projection);
 
         }
 
@@ -172,8 +176,8 @@ void GIF::Window::clickCheck()
     int state = glfwGetMouseButton(getWindow(), GLFW_MOUSE_BUTTON_LEFT);
     if (m__lastClickStates[GLFW_MOUSE_BUTTON_LEFT] == GLFW_RELEASE && state == GLFW_PRESS)
     {
-        cout << "Click" << endl;
-        Gif::click(this, vec2(x,y));
+        cout << "Click: " << x << "/" << m__width << "x " << y << "/" <<m__height <<  "y" << endl;
+        Gif::click(this, vec2(x, m__height - y));
     }
 
     m__lastClickStates[GLFW_MOUSE_BUTTON_LEFT] = state;
@@ -182,8 +186,6 @@ void GIF::Window::clickCheck()
 
 	if(m__captureCursor)
 		glfwSetCursorPos(getWindow(), double(getWidth())/2, double(getHeight())/2);
-
-
 
 }
 
@@ -196,7 +198,7 @@ vec3 GIF::Window::getClickColor(vec2 pos)
 
     GLubyte data[3];
 
-    glReadPixels(pos.x, pos.y - m__width / 2, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glReadPixels(pos.x, pos.y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, data);
 
     glBindTexture(GL_TEXTURE_2D, 0);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -212,6 +214,11 @@ void GIF::Window::window_size_callback(GLFWwindow* window, int width, int height
 {
 
 	cout << "[Window] window_size_callback(): " << window << ": New size:" << width << "x" << height << endl;
+
+	Window* w = static_cast<Window*>(glfwGetWindowUserPointer(window));
+
+    w->setWidth(width);
+    w->setHeight(height);
 
 }
 

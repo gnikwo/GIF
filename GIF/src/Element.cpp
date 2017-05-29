@@ -13,7 +13,7 @@ using namespace std;
 using namespace glm;
 using namespace GIF;
 
-Element::Element(): Controller(), m__clickColor(), m__pos(), m__points(), m__vao(), m__vbo(), m__shader(), m__clickShader(), m__textures(), m__intUniforms()
+Element::Element(): Controller(), m__clickColor(), m__pos(), m__size(100), m__points(), m__vao(), m__vbo(), m__shader(), m__clickShader(), m__textures(), m__intUniforms()
 {
 
     m__clickColor = vec3(rand() % 256, rand() % 256, rand() % 256);
@@ -133,6 +133,7 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 {
 
     Shader* s = m__shader;
+    //Shader* s = m__clickShader;
 
     glEnable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
@@ -141,9 +142,13 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 
 	glBindVertexArray(getVAO());
 
+    model = glm::translate(model, glm::vec3(m__pos, 0.f));
+    model = glm::scale(model, glm::vec3(m__size, 0.f));
+
 	s->envoyerMat4("projection", projection);
     s->envoyerMat4("model", model);
-    s->envoyerVec3("position", glm::vec3(m__pos, 0.f));
+
+    s->envoyerVec3("clickColor", m__clickColor);
 
     for(const auto iter : m__intUniforms)
     {
@@ -199,9 +204,11 @@ void Element::clickRender(glm::mat4 projection, glm::mat4 model)
 
 	glBindVertexArray(getVAO());
 
+    model = glm::translate(model, glm::vec3(m__pos, 0.f));
+    model = glm::scale(model, glm::vec3(m__size, 0.f));
+
 	m__clickShader->envoyerMat4("projection", projection);
 	m__clickShader->envoyerMat4("model", model);
-    m__clickShader->envoyerVec3("position", glm::vec3(m__pos, 0.f));
 
     m__clickShader->envoyerVec3("clickColor", m__clickColor);
 
