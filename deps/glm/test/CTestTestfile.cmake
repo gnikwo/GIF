@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/nabos/GIF/deps/glm/test
-# Build directory: /home/nabos/GIF/deps/glm/test
+# Source directory: C:/Users/guy/gif/deps/glm/test
+# Build directory: C:/Users/guy/gif/deps/glm/test
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

@@ -6,7 +6,9 @@
 
 #include <iostream>
 #include <chrono>
-#include <thread>
+#include <cstdlib>
+
+#include "ThreadWindows.h"
 
 using namespace std;
 using namespace glm;
@@ -129,7 +131,7 @@ void GIF::Window::render()
 
     int framerate = 60/1000;
 	if(elapsedTime < framerate)
-        this_thread::sleep_for(std::chrono::milliseconds(framerate - elapsedTime));
+        Thread::sleep(framerate - elapsedTime);
 
 }
 

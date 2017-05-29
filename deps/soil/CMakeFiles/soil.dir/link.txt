@@ -1,2 +1,2 @@
-/usr/bin/ar qc libsoil.a  CMakeFiles/soil.dir/src/image_helper.c.o CMakeFiles/soil.dir/src/stb_image_aug.c.o CMakeFiles/soil.dir/src/image_DXT.c.o CMakeFiles/soil.dir/src/SOIL.c.o
-/usr/bin/ranlib libsoil.a
+C:\MinGW\bin\ar.exe qc libsoil.a  CMakeFiles/soil.dir/src/image_helper.c.obj CMakeFiles/soil.dir/src/stb_image_aug.c.obj CMakeFiles/soil.dir/src/image_DXT.c.obj CMakeFiles/soil.dir/src/SOIL.c.obj
+C:\MinGW\bin\ranlib.exe libsoil.a

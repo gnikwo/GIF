@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/nabos/GIF/deps/soil/src/SOIL.c
+C:/Users/guy/gif/deps/soil/src/SOIL.c
 windows.h
 -
 wingdi.h
@@ -22,23 +22,23 @@ GL/gl.h
 GL/glx.h
 -
 SOIL.h
-/home/nabos/GIF/deps/soil/src/SOIL.h
+C:/Users/guy/gif/deps/soil/src/SOIL.h
 stb_image_aug.h
-/home/nabos/GIF/deps/soil/src/stb_image_aug.h
+C:/Users/guy/gif/deps/soil/src/stb_image_aug.h
 image_helper.h
-/home/nabos/GIF/deps/soil/src/image_helper.h
+C:/Users/guy/gif/deps/soil/src/image_helper.h
 image_DXT.h
-/home/nabos/GIF/deps/soil/src/image_DXT.h
+C:/Users/guy/gif/deps/soil/src/image_DXT.h
 stdlib.h
 -
 string.h
 -
 
-/home/nabos/GIF/deps/soil/src/SOIL.h
+C:/Users/guy/gif/deps/soil/src/SOIL.h
 
-/home/nabos/GIF/deps/soil/src/image_DXT.c
+C:/Users/guy/gif/deps/soil/src/image_DXT.c
 image_DXT.h
-/home/nabos/GIF/deps/soil/src/image_DXT.h
+C:/Users/guy/gif/deps/soil/src/image_DXT.h
 math.h
 -
 stdlib.h
@@ -48,21 +48,21 @@ string.h
 stdio.h
 -
 
-/home/nabos/GIF/deps/soil/src/image_DXT.h
+C:/Users/guy/gif/deps/soil/src/image_DXT.h
 
-/home/nabos/GIF/deps/soil/src/image_helper.c
+C:/Users/guy/gif/deps/soil/src/image_helper.c
 image_helper.h
-/home/nabos/GIF/deps/soil/src/image_helper.h
+C:/Users/guy/gif/deps/soil/src/image_helper.h
 stdlib.h
 -
 math.h
 -
 
-/home/nabos/GIF/deps/soil/src/image_helper.h
+C:/Users/guy/gif/deps/soil/src/image_helper.h
 
-/home/nabos/GIF/deps/soil/src/stb_image_aug.c
+C:/Users/guy/gif/deps/soil/src/stb_image_aug.c
 stb_image_aug.h
-/home/nabos/GIF/deps/soil/src/stb_image_aug.h
+C:/Users/guy/gif/deps/soil/src/stb_image_aug.h
 math.h
 -
 string.h
@@ -78,15 +78,15 @@ assert.h
 stdarg.h
 -
 stbi_DDS_aug.h
-/home/nabos/GIF/deps/soil/src/stbi_DDS_aug.h
+C:/Users/guy/gif/deps/soil/src/stbi_DDS_aug.h
 stbi_DDS_aug_c.h
-/home/nabos/GIF/deps/soil/src/stbi_DDS_aug_c.h
+C:/Users/guy/gif/deps/soil/src/stbi_DDS_aug_c.h
 
-/home/nabos/GIF/deps/soil/src/stb_image_aug.h
+C:/Users/guy/gif/deps/soil/src/stb_image_aug.h
 stdio.h
 -
 
-/home/nabos/GIF/deps/soil/src/stbi_DDS_aug.h
+C:/Users/guy/gif/deps/soil/src/stbi_DDS_aug.h
 
-/home/nabos/GIF/deps/soil/src/stbi_DDS_aug_c.h
+C:/Users/guy/gif/deps/soil/src/stbi_DDS_aug_c.h
 

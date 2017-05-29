@@ -2,6 +2,10 @@
 #define MUTEX_H
 
 #include <string>
+#include <windows.h>
+
+#include <conio.h>
+#include <process.h>
 
 #include "MutexInterface.h"
 
