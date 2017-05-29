@@ -163,7 +163,7 @@ include_directories("${PROJECT_SOURCE_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/test/external")
 
 add_subdirectory(glm)
-add_subdirectory(test)
+#add_subdirectory(test)
 
 set(GLM_INSTALL_CONFIGDIR "${CMAKE_INSTALL_LIBDIR}/cmake/glm")
 install(DIRECTORY glm DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
@@ -191,7 +191,7 @@ configure_package_config_file(
 )
 
 install(
-    FILES 
+    FILES
         "${CMAKE_CURRENT_BINARY_DIR}/${GLM_INSTALL_CONFIGDIR}/glmConfig.cmake"
         "${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
     DESTINATION ${GLM_INSTALL_CONFIGDIR}
@@ -209,7 +209,7 @@ if (NOT CMAKE_VERSION VERSION_LESS "3.0")
         EXPORT glmTargets
         FILE "${CMAKE_CURRENT_BINARY_DIR}/glmTargets.cmake"
     )
-    
+
     install(
         EXPORT glmTargets FILE glmTargets.cmake
         DESTINATION ${GLM_INSTALL_CONFIGDIR}

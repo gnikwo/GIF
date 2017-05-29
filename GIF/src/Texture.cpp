@@ -33,9 +33,11 @@ void Texture::load()
 	if(!m__name.empty())
 	{
 
+        string dir = "Textures/" + m__name;
+
 		m__id = SOIL_load_OGL_texture
 		(
-			(char*)m__name.c_str(),
+			(char*)dir.c_str(),
 			SOIL_LOAD_AUTO,
 			SOIL_CREATE_NEW_ID,
 			SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y | SOIL_FLAG_NTSC_SAFE_RGB | SOIL_FLAG_COMPRESS_TO_DXT
