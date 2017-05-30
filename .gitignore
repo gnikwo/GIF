@@ -2,6 +2,8 @@
 
 !/.gitignore
 !/CMakeLists.txt
+!/Rapport.tex
+!/Rapport.pdf
 
 !/Analyse
 !/GIF

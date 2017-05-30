@@ -1,0 +1,114 @@
+%%
+%
+% Gnikwo
+% gnikwo@hotmail.com
+%
+%%
+
+\documentclass[a4paper]{report}
+
+%packages
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage{graphicx}\graphicspath{{pix/}}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{fancyhdr}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage[Bjornstrup]{fncychap}
+\usepackage[procnames]{listings}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\usepackage{pdfpages}
+\usepackage{titlesec, blindtext, color}
+
+%pdf metadata
+\hypersetup{
+    unicode=true,
+    colorlinks=true,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    pdfauthor={Nicolas Ballet <gnikwo@hotmail.com>},
+    pdftitle={},
+    pdfcreator={pdftex},
+    pdfsubject={},
+    pdfkeywords={},
+}
+
+
+\definecolor{keywords}{RGB}{200,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+%inner meta
+\title{Rapport LO43}
+\author{Nicolas Ballet, Nicolas Vincent, Marine Collet, Lucas Demouy}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\listoffigures
+
+\chapter{Background}
+
+\section{Attentes}
+
+Le but de ce projet était de montrer que nous avons appris à créer un programme ayant une structure générique et
+réutilisable dans le cadre de l'UV LO43.
+
+\section{Choix du sujet}
+
+Nous étions interessés par l'un des sujets proposés par M.XXX: "Développement d'un framework permettant de créer et de
+gèrer des interfaces graphiques". Initialement, ce sujet propose donc de concevoir et de développer un framework en
+Java permettant, lorsque nous avons une application déja éxistante de pouvoir y greffer une interface graphique, et cela
+de manière simple. On doit donc pouvoir définir des paramètres liés à l'application, ainsi que des boutons contrôlant
+son fil d'éxécution (Start / Stop / Pause / Pas à pas).
+S'approprier son sujet étant très important, nous y avons apporté des
+modifications. Nous sommes donc partis sur un développement en C++, utilisant OpenGL pour le rendu graphique, et
+utilisant des threads afin de séparer l'interface graphique et le coeur de l'application. Le
+framework doit pouvoir etre compilé aussi bien sur Windows que sur un système Unix.
+
+Nos modifications impliquaient l'implémentation d'un moteur graphique. Mais cela faisait aussi appel à beaucoup de
+générissité, nous nous sommes donc concentrés la dessus.
+
+\section{Objectifs}
+
+Finalement, notre sujet s'est formalisé comme ceci:
+Création d'un framework multi-os performant, permettant de créer des interfaces sur des applications pré-éxistantes ou
+non. Il devra être capable d'être étendu simplement (l'utilisateur du framework doit pouvoir facilement créer de
+nouveaux types d'éléments graphiques). Il devra aussi comporter une gestion des appuis clavier et des clics souris.
+
+
+\chapter{Analyse}
+
+
+\section{}
+
+\includegraphics{Textures/ok-button-2.png}
+
+% \begin{lstlisting}
+% Code
+% \end{lstlisting}
+
+
+% Annexes
+
+\appendix
+\addtolength{\textheight}{60mm}
+\part*{Annexes}
+\addtolength{\topmargin}{-50mm}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[block]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}[\vskip -2em]
+
+% \chapter{Annexe 1}
+
+\end{document}
+
