@@ -2,6 +2,7 @@
 
 !/.gitignore
 !/README.md
+!/licence.txt
 !/CMakeLists.txt
 !/Rapport.tex
 !/Rapport.pdf
