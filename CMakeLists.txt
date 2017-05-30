@@ -3,7 +3,7 @@ project(GIF_all)
 
 if(WIN32)
 
-    SET(CMAKE_CXX_COMPILER C:/MinGW/bin/g++.exe)
+    SET(CMAKE_CXX_COMPILER "C:/MinGW/bin/g++.exe")
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 endif()
