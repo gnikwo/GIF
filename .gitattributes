@@ -1,0 +1,4 @@
+*.cpp text
+*.h text
+
+/Analyse linguist-documentation
