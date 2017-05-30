@@ -1,4 +1,5 @@
-*.cpp text
-*.h text
+*.cpp linguist-language=C++
+*.h linguist-language=C++
 
-/Analyse linguist-documentation
+Analyse/* linguist-documentation
+deps/* linguist-vendored
