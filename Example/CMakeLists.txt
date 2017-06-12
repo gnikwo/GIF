@@ -8,7 +8,7 @@ add_executable(Example
 )
 
 #Compilation args
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -O3 -g3 -std=c++11 -i GIF/include -L GIF/lib")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -O3 -g3 -std=c++11 -I GIF/include -L GIF/lib -L deps/glfw/lib")
 
 
 #Include dirs
@@ -20,7 +20,7 @@ include_directories(../deps/glfw/include)
 
 #Linked libs
 #find_package(GIF REQUIRED)
-find_package(glfw3 3.2 REQUIRED)
+find_package(glfw 3.2 REQUIRED)
 
 target_link_libraries(Example GIF)
 target_link_libraries(Example GL)

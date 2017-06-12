@@ -26,7 +26,6 @@ Element::Element(): Controller(), m__clickColor(), m__pos(), m__size(100), m__po
 
 }
 
-
 Element::~Element()
 {
 

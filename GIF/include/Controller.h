@@ -25,7 +25,6 @@ namespace GIF
         public:
 
             Controller();
-            virtual ~Controller();
 
             void bind(const int key, std::function<void()> action);
             void unbind(const int key);

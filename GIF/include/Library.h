@@ -24,13 +24,64 @@ namespace GIF
 
                 }
 
+                /** Copy constructor
+                 * @param other, Library lvalue reference to copy
+                 */
+                Library(const Library& other): Library()
+                {
+
+                    for(auto it : other.m__objects)
+                    {
+
+                        m__objects.insert(std::pair<decltype(it.first), T*>(it.fist, new T(it.second)) );
+
+                    }
+
+                }
+
+                /** Move constructor
+                 * @param other, Library rvalue to move
+                 */
+                Library(Library&& other): Library()
+                {
+
+                    swap(*this, other);
+
+                }
 
                 ~Library()
                 {
 
-
+                    flush();
 
                 }
+
+                friend void swap(Library& a, Library& b)
+                {
+
+                    using std::swap;
+
+                    std::swap(a.map, b.map);
+
+                }
+
+                Library& operator=(const Library& other)
+                {
+
+                    Library temp(other);
+
+                    swap(*this, other);
+
+                }
+
+
+                Library& operator=(Library&& other)
+                {
+
+                    swap(*this, other);
+
+                }
+
 
                 bool has(std::string path)
                 {
