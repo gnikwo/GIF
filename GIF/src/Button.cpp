@@ -39,12 +39,6 @@ Button::Button(): Element(), m__action(), m__pressed(false)
 }
 
 
-Button::~Button()
-{
-
-}
-
-
 void Button::action()
 {
 

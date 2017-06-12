@@ -8,7 +8,7 @@ add_executable(Example
 )
 
 #Compilation args
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -O3 -g3 -std=c++11")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -O3 -g3 -std=c++11 -I GIF/include -L GIF/lib -L deps/glfw/lib")
 
 
 #Include dirs
@@ -16,14 +16,15 @@ include_directories(include)
 include_directories(../GIF/include)
 include_directories(../deps/soil/src)
 include_directories(../deps/glew/include)
+include_directories(../deps/glfw/include)
 
 #Linked libs
-find_package(GIF REQUIRED)
-find_package(glfw3 3.2 REQUIRED)
+#find_package(GIF REQUIRED)
+find_package(glfw 3.2 REQUIRED)
 
 target_link_libraries(Example GIF)
 target_link_libraries(Example GL)
-target_link_libraries(Example glfw ${GLFW_LIBRARIES})
+target_link_libraries(Example glfw3 ${GLFW_LIBRARIES})
 target_link_libraries(Example GLEW)
 target_link_libraries(Example glm)
 target_link_libraries(Example soil)

@@ -8,6 +8,8 @@
 !/Rapport.tex
 !/Rapport.pdf
 
+!/cmake
+
 !/Analyse
 !/GIF
 !/Example
@@ -30,4 +32,7 @@
 !/deps/glew/src
 
 
-!/deps/glfw
+/deps/glfw/*
+/deps/glfw/src
+/deps/glfw/include
+/deps/glfw/CMakeLists.txt

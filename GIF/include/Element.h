@@ -97,9 +97,6 @@ namespace GIF{
              */
             Element();
 
-            /**
-             *
-             */
             virtual ~Element();
 
             /**

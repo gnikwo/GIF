@@ -16,14 +16,6 @@ Controller::Controller(): m__keyBindings()
 }
 
 
-Controller::~Controller()
-{
-
-
-
-}
-
-
 void Controller::bind(const int key, function<void()> action)
 {
 

@@ -25,7 +25,6 @@ namespace GIF{
         public:
 
             Button();
-            virtual ~Button();
 
             void click() { action(); };
 
