@@ -6,11 +6,6 @@
 #include <algorithm>
 #include <functional>
 
-// Includes GLM
-#include <glm/glm.hpp>
-#include <glm/gtx/transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
