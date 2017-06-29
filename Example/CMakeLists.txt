@@ -5,6 +5,8 @@ project(Example CXX)
 #Bin declaration
 add_executable(Example
     src/main.cpp
+    src/LeftArrow.cpp
+    src/RightArrow.cpp
 )
 
 #Compilation args

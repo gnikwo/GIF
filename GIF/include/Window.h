@@ -73,6 +73,8 @@ namespace GIF
             bool m__visibleCursor;
             bool m__captureCursor;
 
+            Element* m__focusedElement;
+
         public:
 
             /**

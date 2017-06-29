@@ -1,8 +1,8 @@
 /**
- * Button class implementation
+ * Box class implementation
  */
 
-#include "Button.h"
+#include "Box.h"
 
 #include <iostream>
 
@@ -15,10 +15,10 @@ using namespace std;
 using namespace glm;
 using namespace GIF;
 
-Button::Button(): Element(), m__action(), m__pressed(false)
+Box::Box(): Element()
 {
 
-    Shader* shader = new Shader("Button");
+    Shader* shader = new Shader("Box");
     shader->load();
 
     setShader(shader);
@@ -39,17 +39,5 @@ Button::Button(): Element(), m__action(), m__pressed(false)
     addUV(vec2( 1.0, 1.0));
     addUV(vec2( 1.0, 0.0));
 
-    addIntUniform("pressed", &(m__pressed));
-
 }
 
-
-void Button::action()
-{
-
-    m__pressed = !m__pressed;
-
-    if(m__action)
-        m__action();
-
-}

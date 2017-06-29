@@ -21,7 +21,9 @@ namespace GIF
 
             Controller();
 
-            void bind(const int key, std::function<void()> action);
+            void bindPress(const int key, std::function<void()> action);
+            void bindPressing(const int key, std::function<void()> action);
+            void bindRelease(const int key, std::function<void()> action);
             void unbind(const int key);
             void unbind();
 
@@ -30,7 +32,9 @@ namespace GIF
 
         private:
 
-            std::map<const int, std::function<void()>> m__keyBindings;
+            std::map<const int, std::function<void()>> m__keyBindingsPress;
+            std::map<const int, std::function<void()>> m__keyBindingsPressing;
+            std::map<const int, std::function<void()>> m__keyBindingsRelease;
             std::map<const int, int> m__lastStates;
 
     };

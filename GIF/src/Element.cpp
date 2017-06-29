@@ -145,7 +145,7 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
 
 	glBindVertexArray(getVAO());
 
-    model = glm::translate(model, glm::vec3(m__pos, 0.f));
+    model = glm::translate(model, m__pos);
     model = glm::scale(model, glm::vec3(m__size, 0.f));
 
 	s->envoyerMat4("projection", projection);
@@ -157,6 +157,13 @@ void Element::render(glm::mat4 projection, glm::mat4 model)
     {
 
         s->envoyer1I(iter.first, *(iter.second));
+
+    }
+
+    for(const auto iter : m__vec3Uniforms)
+    {
+
+        s->envoyerVec3(iter.first, *(iter.second));
 
     }
 
@@ -207,7 +214,7 @@ void Element::clickRender(glm::mat4 projection, glm::mat4 model)
 
 	glBindVertexArray(getVAO());
 
-    model = glm::translate(model, glm::vec3(m__pos, 0.f));
+    model = glm::translate(model, m__pos);
     model = glm::scale(model, glm::vec3(m__size, 0.f));
 
 	m__clickShader->envoyerMat4("projection", projection);

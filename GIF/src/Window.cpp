@@ -23,7 +23,10 @@ GIF::Window::Window(std::string title, int width, int height): Controller(),
                                                                 m__backgroundColor(vec3(0.9, 0.9, 0.9)),
                                                                 m__elements(),
                                                                 m__framebuffer(),
-                                                                m__clickTexture()
+                                                                m__clickTexture(),
+                                                                m__visibleCursor(true),
+                                                                m__captureCursor(false),
+                                                                m__focusedElement(nullptr)
 {
 
 
@@ -171,13 +174,12 @@ void GIF::Window::clickCheck()
 
 	double x, y;
 	glfwGetCursorPos(getWindow(), &x, &y);
-	double dx = x - double(getWidth())/2, dy = y - double(getHeight())/2;
 
     int state = glfwGetMouseButton(getWindow(), GLFW_MOUSE_BUTTON_LEFT);
     if (m__lastClickStates[GLFW_MOUSE_BUTTON_LEFT] == GLFW_RELEASE && state == GLFW_PRESS)
     {
         cout << "Click: " << x << "/" << m__width << "x " << y << "/" <<m__height <<  "y" << endl;
-        Gif::click(this, vec2(x, m__height - y));
+        m__focusedElement = Gif::click(this, vec2(x, m__height - y));
     }
 
     m__lastClickStates[GLFW_MOUSE_BUTTON_LEFT] = state;

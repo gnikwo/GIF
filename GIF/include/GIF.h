@@ -37,7 +37,7 @@ namespace GIF
 
             static Texture* getTexture(std::string name);
 
-            static bool click(Window* w, glm::vec2 pos);
+            static Element* click(Window* w, glm::vec2 pos);
 
         private:
 

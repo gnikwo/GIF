@@ -161,7 +161,7 @@ Texture* Gif::getTexture(string name)
 }
 
 
-bool Gif::click(Window* w, vec2 pos)
+Element* Gif::click(Window* w, vec2 pos)
 {
 
     vec3 color = w->getClickColor(pos);
@@ -178,13 +178,13 @@ bool Gif::click(Window* w, vec2 pos)
 
             cout << "Test 3" << endl;
             iter.second->click();
-            return true;
+            return iter.second;
 
         }
 
     }
 
-    return false;
+    return nullptr;
 
 }
 

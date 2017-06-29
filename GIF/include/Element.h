@@ -43,7 +43,7 @@ namespace GIF{
             /**
              *
              */
-            glm::vec2 m__pos;
+            glm::vec3 m__pos;
 
             /**
              *
@@ -90,6 +90,12 @@ namespace GIF{
              */
             std::map<std::string, int*> m__intUniforms;
 
+            /**
+             *
+             */
+            std::map<std::string, glm::vec3*> m__vec3Uniforms;
+
+
         public:
 
             /**
@@ -133,12 +139,12 @@ namespace GIF{
             /**
              *
              */
-            void setPos(glm::vec2 pos){ m__pos = pos; };
+            void setPos(glm::vec3 pos){ m__pos = pos; };
 
             /**
              *
              */
-            glm::vec2 getPos(){ return m__pos; };
+            glm::vec3 getPos(){ return m__pos; };
 
             /**
              *
@@ -230,6 +236,11 @@ namespace GIF{
              *
              */
             void addIntUniform(std::string uniformName, int* intName){ m__intUniforms.insert(std::pair<std::string, int*>(uniformName, intName)); };
+
+            /**
+             *
+             */
+            void addVec3Uniform(std::string uniformName, glm::vec3* vec3Name){ m__vec3Uniforms.insert(std::pair<std::string, glm::vec3*>(uniformName, vec3Name)); };
 
             /**
              *

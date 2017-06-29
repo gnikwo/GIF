@@ -20,6 +20,7 @@ add_library(GIF SHARED
     src/ThreadInterface.cpp
     ${OS_dependant_sources}
     src/Button.cpp
+    src/Box.cpp
 	src/Library.cpp
 	src/Controller.cpp
 )
